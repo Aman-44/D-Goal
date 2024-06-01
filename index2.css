@@ -138,3 +138,8 @@ width:100%;
         width:100%;
     }
 }
+@media (max-width: 1050px) and (min-width: 700px) {
+    .goalg{
+        grid-template-columns:auto auto;
+    }
+}
