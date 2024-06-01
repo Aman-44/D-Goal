@@ -134,4 +134,7 @@ width:100%;
     .goalg{
         grid-template-columns: auto;
     }
+    input{
+        width:100%;
+    }
 }
