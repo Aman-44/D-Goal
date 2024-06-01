@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
       renderGoals();
       updateStats();
     } else {
-      alert("You can only increment the streak once per day!");
+      alert("You can only increment the streak once per day, Try from tomorrow!");
     }
   };
 
