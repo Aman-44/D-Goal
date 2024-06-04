@@ -15,7 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateStats() {
     const totalGoals = goals.length;
     const ongoingStreaks = goals.filter(goal => goal.streak > 0).length;
-    const successRate = totalGoals ? Math.round((ongoingStreaks / totalGoals) * 100) : 0;
+
+    // Calculate the new success rate
+    const maxStreak = goals.length ? Math.max(...goals.map(goal => goal.streak)) : 0;
+    const averageStreak = goals.length ? goals.reduce((sum, goal) => sum + goal.streak, 0) / goals.length : 0;
+    const successRate = maxStreak ? Math.round((averageStreak / maxStreak) * 100) : 0;
 
     goalCountElement.textContent = totalGoals;
     ongoingStreaksElement.textContent = ongoingStreaks;
@@ -30,12 +34,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       goalElement.innerHTML = `
         <div class="card">
-            <span class="card-day">Streak: ${goal.streak}</span>
+          <span class="card-day">Streak: ${goal.streak}</span>
           <span class="card-goal">${goal.text}</span>
           <button class="card-done" onclick="incrementStreak(${index})">Done</button>
           <button class="card-done" onclick="deleteGoal(${index})">Delete</button>
-          </div>
-        `;
+        </div>
+      `;
 
       goalsContainer.appendChild(goalElement);
     });
@@ -77,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
       renderGoals();
       updateStats();
     } else {
-      alert("You can only increment the streak once per day, Try from tomorrow!");
+      alert("You can only increment the streak once per day!");
     }
   };
 
@@ -104,4 +108,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
   checkAndResetStreaks();
 });
-
