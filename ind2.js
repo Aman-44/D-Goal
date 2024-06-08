@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const today = new Date();
     goals.forEach(goal => {
       const lastUpdate = new Date(goal.lastUpdate);
-      if (!isSameDay(today, lastUpdate) && !isNextDay(lastUpdate, today)) {
+      if (!isSameDay(today, lastUpdate) && !isNextDay(lastUpdate, today) && goal.streak > 0) {
         goal.streak = 0;
         goal.lastUpdate = today.toISOString();
       }
