@@ -5,11 +5,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const goalCountElement = document.getElementById('goal-count');
   const ongoingStreaksElement = document.getElementById('ongoing-streaks');
   const successRateElement = document.querySelector('.stats div:nth-child(3) span');
+  const pointsElement = document.getElementById('points'); // Add this element in your HTML to display points
 
   let goals = JSON.parse(localStorage.getItem('goals')) || [];
+  let points = parseInt(localStorage.getItem('points')) || 0; // Initialize points from localStorage
 
   function saveGoalsToLocalStorage() {
     localStorage.setItem('goals', JSON.stringify(goals));
+  }
+
+  function savePointsToLocalStorage() {
+    localStorage.setItem('points', points);
   }
 
   function updateStats() {
@@ -24,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     goalCountElement.textContent = totalGoals;
     ongoingStreaksElement.textContent = ongoingStreaks;
     successRateElement.textContent = `${successRate}%`;
+    pointsElement.textContent = points; // Update the points display
   }
 
   function renderGoals() {
@@ -77,7 +84,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!isSameDay(today, lastUpdate)) {
       goals[index].streak += 1;
       goals[index].lastUpdate = today.toISOString();
+      
+      points += 1; // Increment points each time a goal is incremented
       saveGoalsToLocalStorage();
+      savePointsToLocalStorage(); // Save the updated points
       renderGoals();
       updateStats();
     } else {
