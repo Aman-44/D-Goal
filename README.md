@@ -10,6 +10,6 @@
 
 ---
 <h3>Contribution</h3>
-- Fixed typos and grammar
-- Removed repetition and improved clarity
-- Reformatted content into proper Markdown
+- Fixed typos and grammar<br>
+- Removed repetition and improved clarity<br>
+- Reformatted content into proper Markdown<br>
