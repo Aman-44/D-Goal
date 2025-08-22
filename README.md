@@ -7,3 +7,9 @@
 - Responsive,online available.<br>
 <br>
 <h2>Use Daily🤗</h2><br>
+
+---
+<h3>Contribution</h3>
+- Fixed typos and grammar
+- Removed repetition and improved clarity
+- Reformatted content into proper Markdown
